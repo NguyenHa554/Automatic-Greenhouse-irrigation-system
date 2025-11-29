@@ -1,5 +1,5 @@
 
-#include "header.h"
+#include "ai_watering.h"
 
 
 static const int32_t num_class[] = {  1, };
@@ -13,7 +13,7 @@ void get_num_class(int32_t* out) {
   }
 }
 int32_t get_num_feature(void) {
-  return 10;
+  return 11;
 }
 const char* get_threshold_type(void) {
   return "float64";
@@ -22,7 +22,7 @@ const char* get_leaf_output_type(void) {
   return "float64";
 }
 
-void predict(union Entry* data, int pred_margin, double* result) {
+void predict(union Entry* data, int pred_margin, float* result) {
   unsigned int tmp;
   predict_unit0(data, result);
   predict_unit1(data, result);
@@ -36,7 +36,7 @@ void predict(union Entry* data, int pred_margin, double* result) {
   if (!pred_margin) { postprocess(result); }
 }
 
-void postprocess(double* result) {
+void postprocess(float* result) {
   // Do nothing
 }
 
